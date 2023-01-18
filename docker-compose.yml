@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    image: ghcr.io/richardds/docker-php
+    image: ghcr.io/richardds/php
     build:
       dockerfile: Dockerfile
       context: .

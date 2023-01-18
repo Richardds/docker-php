@@ -34,7 +34,7 @@ jobs:
             COMPOSER_VERSION=2.5.1
           push: true
           tags: |
-            richardboldis/docker-php:latest
-            richardboldis/docker-php:${{ github.ref_name }}
-            ghcr.io/richardds/docker-php:latest
-            ghcr.io/richardds/docker-php:${{ github.ref_name }}
+            richardboldis/php:latest
+            richardboldis/php:${{ github.ref_name }}
+            ghcr.io/richardds/php:latest
+            ghcr.io/richardds/php:${{ github.ref_name }}
