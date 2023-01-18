@@ -54,6 +54,7 @@ jobs:
           file: ${{ matrix.php_versions.dockerfile }}
           build-args: |
             ALPINE_VERSION=${{ matrix.php_versions.alpine }}
+            XDEBUG_MODE=develop,coverage,debug
             COMPOSER_VERSION=${{ matrix.composer.version }}
           push: true
           tags: |
