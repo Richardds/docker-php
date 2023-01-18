@@ -10,13 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        composer:
-          -
-            tag: 2.2
-            version: 2.2.18
-          -
-            tag: 2.5
-            version: 2.5.1
         php_versions:
           -
             alpine: 3.15
@@ -30,6 +23,13 @@ jobs:
             alpine: edge
             php: 8.2
             dockerfile: Dockerfile82
+        composer:
+          -
+            tag: 2.2
+            version: 2.2.18
+          -
+            tag: 2.5
+            version: 2.5.1
     steps:
       -
         name: Setup Docker
@@ -54,6 +54,7 @@ jobs:
           file: ${{ matrix.php_versions.dockerfile }}
           build-args: |
             ALPINE_VERSION=${{ matrix.php_versions.alpine }}
+            XDEBUG_MODE=develop,coverage,debug
             COMPOSER_VERSION=${{ matrix.composer.version }}
           push: true
           tags: |

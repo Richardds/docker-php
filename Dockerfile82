@@ -3,6 +3,7 @@ ARG ALPINE_VERSION
 FROM alpine:${ALPINE_VERSION}
 
 ARG COMPOSER_VERSION
+ARG XDEBUG_MODE
 
 WORKDIR /app
 
@@ -11,6 +12,7 @@ LABEL org.opencontainers.image.description 'PHP with XDebug and Composer'
 LABEL org.opencontainers.image.authors 'Richard Boldiš <richard@boldis.dev>'
 LABEL org.opencontainers.image.source https://github.com/Richardds/docker-php
 
+# Install and configure PHP and its extensions
 RUN apk add --no-cache --update php82 \
                                 php82-curl \
                                 php82-dom \
@@ -24,7 +26,9 @@ RUN apk add --no-cache --update php82 \
                                 php82-xmlwriter \
                                 php82-zip \
  && rm -rf /var/cache/apk/* \
- && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php82 /usr/bin/php; fi
+ && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php82 /usr/bin/php; fi \
+ && echo 'zend_extension=xdebug.so' > /etc/php82/conf.d/50_xdebug.ini \
+ && echo "xdebug.mode=${XDEBUG_MODE}" >> /etc/php82/conf.d/50_xdebug.ini
 
 # Install composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer \
