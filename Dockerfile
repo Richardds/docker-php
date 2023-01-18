@@ -27,6 +27,6 @@ RUN apk add --no-cache --update php81 \
 
 # Install composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer \
-    -O - -q | php81 -- --version=${COMPOSER_VERSION} \
-                       --install-dir=/usr/local/bin \
-                       --filename=composer
+    -O - -q | php -- --version=${COMPOSER_VERSION} \
+                     --install-dir=/usr/local/bin \
+                     --filename=composer

@@ -8,5 +8,5 @@ services:
       context: .
       args:
         - ALPINE_VERSION=3.17
-        - COMPOSER_VERSION=2.3
+        - COMPOSER_VERSION=2.5.1
     restart: unless-stopped
