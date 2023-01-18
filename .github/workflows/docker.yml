@@ -12,6 +12,9 @@ jobs:
       matrix:
         composer:
           -
+            tag: 2.2
+            version: 2.2.18
+          -
             tag: 2.5
             version: 2.5.1
         php_versions:
