@@ -60,8 +60,10 @@ jobs:
             richardboldis/php:latest
             richardboldis/php:${{ matrix.php_versions.php }}
             richardboldis/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}
+            richardboldis/php:${{ matrix.php_versions.php }}-composer${{ matrix.composer.tag }}
             richardboldis/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}-composer${{ matrix.composer.tag }}
             ghcr.io/richardds/php:latest
             ghcr.io/richardds/php:${{ matrix.php_versions.php }}
             ghcr.io/richardds/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}
+            ghcr.io/richardds/php:${{ matrix.php_versions.php }}-composer${{ matrix.composer.tag }}
             ghcr.io/richardds/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}-composer${{ matrix.composer.tag }}

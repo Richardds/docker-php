@@ -2,6 +2,19 @@
 
 Customized Docker image for PHP including XDebug and Composer.
 
+**PHP 7.4**: `docker run -it -v$(pwd):/app ghcr.io/richardds/php:7.4`
+
+**PHP 8.1**: `docker run -it -v$(pwd):/app ghcr.io/richardds/php:8.1`
+
+**PHP 8.2**: `docker run -it -v$(pwd):/app ghcr.io/richardds/php:8.2`
+
+Additional tags:
+- `latest`: Latest image
+- `<php_version>`: Latest image of specific PHP version
+- `<php_version>-<repo_ref>`: Versioned image of specific PHP version
+- `<php_version>-<repo_ref>-composer<composer_version>`: Versioned image of specific PHP and composer versions
+- `<php_version>-composer<composer_version>`: Latest image of specific PHP and composer versions
+
 Useful links:
 - Alpine packages for PHP 7.4
   - [PHP package](https://pkgs.alpinelinux.org/package/v3.15/community/x86_64/php7)
