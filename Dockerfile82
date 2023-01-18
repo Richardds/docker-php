@@ -1,0 +1,32 @@
+ARG ALPINE_VERSION
+
+FROM alpine:${ALPINE_VERSION}
+
+ARG COMPOSER_VERSION
+
+WORKDIR /app
+
+LABEL org.opencontainers.image.title 'PHP'
+LABEL org.opencontainers.image.description 'PHP with XDebug and Composer'
+LABEL org.opencontainers.image.authors 'Richard Boldiš <richard@boldis.dev>'
+LABEL org.opencontainers.image.source https://github.com/Richardds/docker-php
+
+RUN apk add --no-cache --update php82 \
+                                php82-curl \
+                                php82-dom \
+                                php82-iconv \
+                                php82-mbstring \
+                                php82-openssl \
+                                php82-pecl-xdebug \
+                                php82-phar \
+                                php82-xml \
+                                php82-xmlreader \
+                                php82-xmlwriter \
+                                php82-zip \
+ && rm -rf /var/cache/apk/*
+
+# Install composer
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer \
+    -O - -q | php -- --version=${COMPOSER_VERSION} \
+                     --install-dir=/usr/local/bin \
+                     --filename=composer

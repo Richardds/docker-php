@@ -26,6 +26,10 @@ jobs:
             alpine: 3.17
             php: 8.1
             dockerfile: Dockerfile81
+          -
+            alpine: edge
+            php: 8.2
+            dockerfile: Dockerfile82
     steps:
       -
         name: Setup Docker
