@@ -8,6 +8,21 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        composer:
+          -
+            tag: 2.5
+            version: 2.5.1
+        php_versions:
+          -
+            alpine: 3.15
+            php: 7.4
+            dockerfile: Dockerfile74
+          -
+            alpine: 3.17
+            php: 8.1
+            dockerfile: Dockerfile81
     steps:
       -
         name: Setup Docker
@@ -29,12 +44,15 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v3
         with:
+          file: ${{ matrix.php_versions.dockerfile }}
           build-args: |
-            ALPINE_VERSION=3.17
-            COMPOSER_VERSION=2.5.1
+            ALPINE_VERSION=${{ matrix.php_versions.alpine }}
+            COMPOSER_VERSION=${{ matrix.composer.version }}
           push: true
           tags: |
             richardboldis/php:latest
-            richardboldis/php:${{ github.ref_name }}
+            richardboldis/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}
+            richardboldis/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}-composer${{ matrix.composer.tag }}
             ghcr.io/richardds/php:latest
-            ghcr.io/richardds/php:${{ github.ref_name }}
+            ghcr.io/richardds/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}
+            ghcr.io/richardds/php:${{ matrix.php_versions.php }}-${{ github.ref_name }}-composer${{ matrix.composer.tag }}
