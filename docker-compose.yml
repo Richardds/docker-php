@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  nginx:
+    image: ghcr.io/richardds/docker-php
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - ALPINE_VERSION=3.17
+        - COMPOSER_VERSION=2.3
+    restart: unless-stopped
