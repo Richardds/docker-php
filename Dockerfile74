@@ -29,7 +29,7 @@ RUN apk add --no-cache --update php7 \
                                 php7-zip \
  && rm -rf /var/cache/apk/* \
  && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php74 /usr/bin/php; fi \
- && echo 'extension=xdebug.so' > /etc/php7/conf.d/50_xdebug.ini \
+ && echo 'zend_extension=xdebug.so' > /etc/php7/conf.d/50_xdebug.ini \
  && echo "xdebug.mode=${XDEBUG_MODE}" >> /etc/php7/conf.d/50_xdebug.ini
 
 # Install composer

@@ -27,7 +27,7 @@ RUN apk add --no-cache --update php81 \
                                 php81-zip \
  && rm -rf /var/cache/apk/* \
  && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php81 /usr/bin/php; fi \
- && echo 'extension=xdebug.so' > /etc/php81/conf.d/50_xdebug.ini \
+ && echo 'zend_extension=xdebug.so' > /etc/php81/conf.d/50_xdebug.ini \
  && echo "xdebug.mode=${XDEBUG_MODE}" >> /etc/php81/conf.d/50_xdebug.ini
 
 # Install composer
