@@ -28,7 +28,7 @@ RUN apk add --no-cache --update php7 \
                                 php7-zip \
  && rm -rf /var/cache/apk/* \
  && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php74 /usr/bin/php; fi \
- && echo 'extension=xdebug.so' > 50_xdebug.ini
+ && echo 'extension=xdebug.so' > /etc/php7/conf.d/50_xdebug.ini
 
 # Install composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer \
