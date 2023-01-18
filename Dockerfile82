@@ -23,7 +23,8 @@ RUN apk add --no-cache --update php82 \
                                 php82-xmlreader \
                                 php82-xmlwriter \
                                 php82-zip \
- && rm -rf /var/cache/apk/*
+ && rm -rf /var/cache/apk/* \
+ && if [ ! -f /usr/bin/php ]; then ln -s /usr/bin/php82 /usr/bin/php; fi
 
 # Install composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer \
