@@ -14,6 +14,7 @@ LABEL org.opencontainers.image.source https://github.com/Richardds/docker-php
 
 # Install and configure PHP and its extensions
 RUN apk add --no-cache --update php82 \
+                                php82-bcmath \
                                 php82-curl \
                                 php82-dom \
                                 php82-iconv \
